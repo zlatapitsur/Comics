@@ -1,20 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VerticalPlayerController : MonoBehaviour
 {
-    [Header("Швидкість руху по Y")]
+    [Header("Movement speed on Y axis")]
     public float moveSpeed = 5f;
 
-    [Header("Обмеження руху по Y (опціонально)")]
+    [Header("Y axis movement limits (optional)")]
     public bool useBounds = false;
     public float minY = -5f;
     public float maxY = 5f;
 
     void Update()
     {
-        // Читаємо натискання: W/S, ↑/↓
+        
         float vertical = 0f;
 
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -26,11 +24,11 @@ public class VerticalPlayerController : MonoBehaviour
             vertical = -1f;
         }
 
-        // Рухаємо об’єкт лише по Y
+     
         Vector3 move = new Vector3(0f, vertical, 0f) * moveSpeed * Time.deltaTime;
         transform.position += move;
 
-        // Якщо хочеш обмежити рух по висоті
+        
         if (useBounds)
         {
             Vector3 pos = transform.position;
